@@ -7,8 +7,16 @@ object D5700 {
     //val keyboard = Keyboard()
     //val screen = Screen()
 
-    fun init(data: ByteArray){
+    fun run(data: ByteArray){
         memory.flashROM(data)
         cpu.start()
+    }
+
+    fun keyboardRead(){
+        TODO("Not implemented yet")
+    }
+
+    fun screenWrite(value: Byte, row: Byte, col: Byte){
+        TODO("Not implemented yet")
     }
 }

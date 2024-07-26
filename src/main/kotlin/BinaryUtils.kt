@@ -14,3 +14,6 @@ fun bytesToShort(bytes : Pair<UByte,UByte>) : UShort{
     canvas += bytes.second.toUInt()
     return canvas.toUShort()
 }
+
+
+
