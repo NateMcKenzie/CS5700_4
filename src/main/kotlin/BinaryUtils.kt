@@ -1,4 +1,6 @@
-fun nibble(byte: Byte) : Pair<Byte, Byte>{
+import cpu.Nibbled
+
+fun nibble(byte: UByte) : Nibbled {
     TODO("Not implemented yet")
 }
 

@@ -6,6 +6,6 @@ class CPU {
     val executive = Executive(parser)
 
     fun start(){
-        TODO("Not implemented yet")
+        executive.start()
     }
 }

@@ -7,7 +7,7 @@ class Parser (private val registerBank : RegisterBank){
         "add" to "add"
     )
 
-    fun parse(input: Pair<Byte,Byte>) : Instruction {
+    fun parse(input: Pair<Nibbled, Nibbled>) : Instruction {
         TODO("Not implemented yet")
     }
 }
