@@ -7,7 +7,8 @@ object D5700 {
     //val keyboard = Keyboard()
     //val screen = Screen()
 
-    fun init(){
-        TODO("Not implemented yet")
+    fun init(data: ByteArray){
+        memory.flashROM(data)
+        cpu.start()
     }
 }
