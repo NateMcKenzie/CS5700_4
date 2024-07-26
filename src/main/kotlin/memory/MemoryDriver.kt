@@ -7,20 +7,18 @@ class MemoryDriver {
         private set;
 
 
-    fun read(address: UByte) : UByte{
-        TODO("NOT IMPLEMENTED YET")
-        //if (ROMmode){
-        //    return ROM.read(address)
-        //}
-        //return RAM.read(address)
+    fun read(address: Pair<UByte, UByte>) : UByte{
+        if (ROMmode){
+            return ROM.read(address)
+        }
+        return RAM.read(address)
     }
 
-    fun write(address: UByte, value: UByte){
-        TODO("NOT IMPLEMENTED YET")
-        //if (ROMmode){
-        //    return ROM.write(address, value)
-        //}
-        //return RAM.write(address, value)
+    fun write(address: Pair<UByte, UByte>, value: UByte){
+        if (ROMmode){
+            return ROM.write(address, value)
+        }
+        return RAM.write(address, value)
     }
 
     fun flashROM(data: ByteArray){

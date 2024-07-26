@@ -4,7 +4,7 @@ fun nibble(byte: Byte) : Pair<Byte, Byte>{
 
 fun shortToBytes(short : UShort) : Pair<UByte,UByte>{
     val first = short.toUInt().shr(8)
-    val second = short - first.toUInt().shl(8)
+    val second = short - first.shl(8)
     return Pair(first.toUByte(), second.toUByte())
 }
 
