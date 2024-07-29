@@ -20,6 +20,10 @@ class Executive (
         }
     }
 
+    fun stop(){
+        clock.cancel()
+    }
+
     private fun mainLoop(){
         val memory = D5700.memory
         var switched = false
@@ -35,6 +39,11 @@ class Executive (
         )
         //Restore memory driver state
         if(switched) memory.switch()
+
+        if(line.first == 0u.toUByte() && line.second == 0u.toUByte()){
+            stop()
+            return
+        }
 
         val nibbleds = Pair(Nibbled(line.first), Nibbled(line.second))
         val instruction = parser.parse(nibbleds.first.nibbles.first)
