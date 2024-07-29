@@ -1,15 +1,14 @@
 package cpu.instructions
 
-import D5700
 import cpu.Nibbled
 import cpu.RegisterBank
 
 @OptIn(ExperimentalUnsignedTypes::class)
-class Read(private val registerBank: RegisterBank) : Instruction(registerBank) {
+class Write(private val registerBank: RegisterBank) : Instruction(registerBank) {
     override fun mainFunction(nibbleds: Pair<Nibbled, Nibbled>) {
         val memoryAddress = registerBank.address
-        val value = D5700.memory.read(memoryAddress[0] to memoryAddress[1])
         val registerAddress = nibbleds.first.second
-        registerBank.writeRegister(registerAddress, value)
+        val value = registerBank.readRegister(registerAddress)
+        D5700.memory.write(memoryAddress[0] to memoryAddress[1], value)
     }
 }

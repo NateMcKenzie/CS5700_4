@@ -24,19 +24,19 @@ class ParserTest {
     @Test
     fun subtractTest(){
         val returned = parser.parse(2u.toUByte())
-        //assertIs<Subtract>(returned)
+        assertIs<Subtract>(returned)
     }
 
     @Test
     fun readTest(){
         val returned = parser.parse(3u.toUByte())
-        //assertIs<Read>(returned)
+        assertIs<Read>(returned)
     }
 
     @Test
     fun writeTest(){
         val returned = parser.parse(4u.toUByte())
-        //assertIs<Write>(returned)
+        assertIs<Write>(returned)
     }
 
     @Test

@@ -10,7 +10,7 @@ import kotlinx.coroutines.runBlocking
 class ReadTest {
     @Test
     fun readTest() = runBlocking {
-        //Note: relies on Reading during ROM mode. This only works because D5700 starts in ROM mode
+        //Note: relies on Reading during ROM mode.
         val bytes = arrayOf(0x30, 0x00,0x00, 0xAB)
         D5700.run(ByteArray(4){
             bytes[it].toByte()

@@ -7,8 +7,8 @@ object D5700 {
     //val keyboard = Keyboard()
     //val screen = Screen()
 
-    fun run(data: ByteArray){
-        memory = MemoryDriver()
+    fun run(data: ByteArray, ROMmode: Boolean = false){
+        memory = MemoryDriver(ROMmode = ROMmode)
         cpu = CPU()
         memory.flashROM(data)
         cpu.start()

@@ -1,9 +1,9 @@
 package memory
 
-class MemoryDriver {
+class MemoryDriver(ROMmode: Boolean = false) {
     private val ROM = Memory(writable = false)
     private val RAM = Memory(writable = true)
-    var ROMmode = false
+    var ROMmode = ROMmode
         private set;
 
 

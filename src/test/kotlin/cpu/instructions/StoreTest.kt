@@ -13,7 +13,7 @@ class StoreTest {
         val bytes = arrayOf(0x00, 0xff)
         D5700.run(ByteArray(2){
             bytes[it].toByte()
-        })
+        }, false)
         delay(2)
         assertEquals(0xffu.toUByte(), D5700.cpu.registers.readRegister(0u.toUByte()))
     }
@@ -23,7 +23,7 @@ class StoreTest {
         val bytes = arrayOf(0x07, 0xcd)
         D5700.run(ByteArray(2){
             bytes[it].toByte()
-        })
+        }, false)
         delay(2)
         assertEquals(0xcdu.toUByte(), D5700.cpu.registers.readRegister(7u.toUByte()))
     }

@@ -13,7 +13,7 @@ class SubtractTest {
         val bytes = arrayOf(0x00, 0x05, 0x01, 0x02, 0x20, 0x13)
         D5700.run(ByteArray(6){
             bytes[it].toByte()
-        })
+        }, false)
         delay(6)
         assertEquals(3u.toUByte(), D5700.cpu.registers.readRegister(3u.toUByte()))
     }
@@ -23,7 +23,7 @@ class SubtractTest {
         val bytes = arrayOf(0x00, 0x01, 0x01, 0x02, 0x20, 0x13)
         D5700.run(ByteArray(6){
             bytes[it].toByte()
-        })
+        }, false)
         delay(6)
         assertEquals(0xFFu.toUByte(), D5700.cpu.registers.readRegister(3u.toUByte()))
     }
