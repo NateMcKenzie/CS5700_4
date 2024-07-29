@@ -38,7 +38,7 @@ class Executive (
         if(switched) memory.switch()
 
         val nibbleds = Pair(nibble(line.first),nibble(line.second))
-        val instruction = parser.parse(nibbleds)
+        val instruction = parser.parse(nibbleds.first.nibbles.first)
         val newPC = instruction.run(nibbleds, shortToBytes(pc))
         pc = bytesToShort(newPC)
     }
