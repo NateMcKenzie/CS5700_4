@@ -17,4 +17,14 @@ class StoreTest {
         delay(2)
         assertEquals(0xffu.toUByte(), D5700.cpu.registers.readRegister(0u.toUByte()))
     }
+
+    @Test
+    fun addressTest() = runBlocking {
+        val bytes = arrayOf(0x07, 0xcd)
+        D5700.run(ByteArray(2){
+            bytes[it].toByte()
+        })
+        delay(2)
+        assertEquals(0xcdu.toUByte(), D5700.cpu.registers.readRegister(7u.toUByte()))
+    }
 }

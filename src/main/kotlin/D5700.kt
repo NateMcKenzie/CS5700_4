@@ -2,12 +2,14 @@ import cpu.CPU
 import memory.MemoryDriver
 
 object D5700 {
-    val memory = MemoryDriver()
-    val cpu = CPU()
+    lateinit var memory : MemoryDriver
+    lateinit var cpu : CPU
     //val keyboard = Keyboard()
     //val screen = Screen()
 
     fun run(data: ByteArray){
+        memory = MemoryDriver()
+        cpu = CPU()
         memory.flashROM(data)
         cpu.start()
     }
