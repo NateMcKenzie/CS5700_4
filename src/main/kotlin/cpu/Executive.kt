@@ -2,7 +2,6 @@ package cpu
 
 import D5700
 import bytesToShort
-import nibble
 import shortToBytes
 import java.util.Timer
 import kotlin.concurrent.timer
@@ -37,7 +36,7 @@ class Executive (
         //Restore memory driver state
         if(switched) memory.switch()
 
-        val nibbleds = Pair(nibble(line.first),nibble(line.second))
+        val nibbleds = Pair(Nibbled(line.first), Nibbled(line.second))
         val instruction = parser.parse(nibbleds.first.nibbles.first)
         val newPC = instruction.run(nibbleds, shortToBytes(pc))
         pc = bytesToShort(newPC)

@@ -1,10 +1,22 @@
 package cpu
 
-class Nibbled(val preNibbled: Pair<UByte, UByte> = Pair(0u.toUByte(),0u.toUByte())) {
-    var nibbles = preNibbled
+class Nibbled(byte: UByte) {
+    var nibbles : Pair<UByte,UByte>
         private set;
 
-    fun byte() : Byte{
-        TODO("Not implemented yet")
+    init {
+        val first = byte.toUInt().shr(4).toUByte()
+        val second = byte.toUInt().and(0x0Fu).toUByte()
+        nibbles = Pair(first,second)
+    }
+
+
+
+
+    fun byte() : UByte{
+        var newByte = nibbles.first.toUInt()
+        newByte = newByte.shl(4)
+        newByte = newByte.or(nibbles.second.toUInt())
+        return newByte.toUByte()
     }
 }

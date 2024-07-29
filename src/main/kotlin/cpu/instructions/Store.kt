@@ -1,9 +1,12 @@
 package cpu.instructions
 
+import cpu.Nibbled
 import cpu.RegisterBank
 
-class Store(registerBank: RegisterBank) : Instruction(registerBank) {
-    override fun mainFunction() {
-        TODO("Not yet implemented")
+class Store(private val registerBank: RegisterBank) : Instruction(registerBank) {
+    override fun mainFunction(nibbleds: Pair<Nibbled, Nibbled>) {
+        val value = nibbleds.second.byte()
+        val address = nibbleds.first.nibbles.first
+        registerBank.writeRegister(address, value)
     }
 }
