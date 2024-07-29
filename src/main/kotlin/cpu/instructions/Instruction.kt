@@ -5,7 +5,7 @@ import cpu.Nibbled
 import cpu.RegisterBank
 import shortToBytes
 
-abstract class Instruction (private val registerBank : RegisterBank){
+abstract class Instruction (registerBank : RegisterBank){
     fun run(nibbleds: Pair<Nibbled, Nibbled>, pc: Pair<UByte,UByte>) : Pair<UByte,UByte> {
         mainFunction(nibbleds)
         return handleCounter(pc)
