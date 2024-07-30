@@ -11,12 +11,13 @@ class Screen {
     private fun printScreen(){
         println("============")
         for (row in 0..7) {
-            print("  ")
+            print(" [")
             for (col in 0..7) {
                 val item = memory.read((row*8 + col).toUShort())
-                print(Char(item.toInt()))
+                if(item == 0u.toUByte()) print(" ")
+                else print(Char(item.toInt()))
             }
-            println()
+            println("]")
         }
     }
 }
