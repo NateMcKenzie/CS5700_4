@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 
 class BinaryUtilsTest {
     @Test
@@ -20,5 +21,30 @@ class BinaryUtilsTest {
         assertEquals(65535u, bytesToShort(255.toUByte() to 255.toUByte()))
         assertEquals(32768u, bytesToShort(128.toUByte() to 0.toUByte()))
         assertEquals(65535u, bytesToShort((-1).toUByte() to (-1).toUByte()))
+    }
+
+    @Test
+    fun stringToByteTest(){
+        assertEquals(0xFFu.toUByte(), stringToByte("FF"))
+    }
+
+    @Test
+    fun stringToByteEmptyTest(){
+        assertEquals(0x0u.toUByte(), stringToByte(""))
+    }
+
+    @Test
+    fun stringToByteShortTest(){
+        assertEquals(0xFu.toUByte(), stringToByte("F"))
+    }
+
+    @Test
+    fun stringToByteInvalidTest(){
+        assertFailsWith<IllegalArgumentException>{
+            stringToByte("HI")
+        }
+        assertFailsWith<IllegalArgumentException>{
+            stringToByte("FI")
+        }
     }
 }

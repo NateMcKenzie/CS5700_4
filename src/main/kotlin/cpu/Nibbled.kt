@@ -1,5 +1,7 @@
 package cpu
 
+import nibblesToByte
+
 class Nibbled(byte: UByte) {
     var nibbles : Pair<UByte,UByte>
         private set;
@@ -12,13 +14,5 @@ class Nibbled(byte: UByte) {
         nibbles = Pair(first,second)
     }
 
-
-
-
-    fun byte() : UByte{
-        var newByte = first.toUInt()
-        newByte = newByte.shl(4)
-        newByte = newByte.or(second.toUInt())
-        return newByte.toUByte()
-    }
+    fun byte() = nibblesToByte(first, second)
 }

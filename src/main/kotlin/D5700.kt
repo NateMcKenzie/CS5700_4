@@ -4,7 +4,7 @@ import memory.MemoryDriver
 object D5700 {
     lateinit var memory : MemoryDriver
     lateinit var cpu : CPU
-    //val keyboard = Keyboard()
+    val keyboard = Keyboard()
     //val screen = Screen()
 
     fun run(data: ByteArray, ROMmode: Boolean = false){
@@ -12,10 +12,6 @@ object D5700 {
         cpu = CPU()
         memory.flashROM(data)
         cpu.start()
-    }
-
-    fun keyboardRead(){
-        TODO("Not implemented yet")
     }
 
     fun screenWrite(value: Byte, row: Byte, col: Byte){
