@@ -2,7 +2,7 @@ package cpu
 
 import cpu.instructions.*
 
-class Parser (registerBank : RegisterBank){
+class Parser(registerBank: RegisterBank) {
     private val instructionMap: Map<UByte, Instruction> = mapOf(
         0u.toUByte() to Store(registerBank),
         1u.toUByte() to Add(registerBank),
@@ -22,7 +22,7 @@ class Parser (registerBank : RegisterBank){
         //15u.toUByte() to Draw(registerBank),
     )
 
-    fun parse(input : UByte) : Instruction {
+    fun parse(input: UByte): Instruction {
         val instruction = instructionMap[input]
         return instruction ?: throw NotImplementedError("Not a known instruction: $input")
     }

@@ -1,17 +1,16 @@
 package cpu.instructions
 
 import D5700
-import kotlin.test.Test
-import kotlin.test.assertEquals
-
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class StoreTest {
     @Test
     fun storeTest() = runBlocking {
         val bytes = arrayOf(0x00, 0xff)
-        D5700.run(ByteArray(2){
+        D5700.run(ByteArray(2) {
             bytes[it].toByte()
         }, false)
         delay(2)
@@ -21,7 +20,7 @@ class StoreTest {
     @Test
     fun addressTest() = runBlocking {
         val bytes = arrayOf(0x07, 0xcd)
-        D5700.run(ByteArray(2){
+        D5700.run(ByteArray(2) {
             bytes[it].toByte()
         }, false)
         delay(2)

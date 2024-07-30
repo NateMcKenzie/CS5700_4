@@ -1,17 +1,16 @@
 package cpu.instructions
 
 import D5700
-import kotlin.test.Test
-import kotlin.test.assertEquals
-
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class AddTest {
     @Test
     fun addTest() = runBlocking {
         val bytes = arrayOf(0x00, 0x01, 0x01, 0x02, 0x10, 0x13)
-        D5700.run(ByteArray(6){
+        D5700.run(ByteArray(6) {
             bytes[it].toByte()
         }, false)
         delay(6)
@@ -21,7 +20,7 @@ class AddTest {
     @Test
     fun overflowTest() = runBlocking {
         val bytes = arrayOf(0x00, 0x02, 0x01, 0xFF, 0x10, 0x13)
-        D5700.run(ByteArray(6){
+        D5700.run(ByteArray(6) {
             bytes[it].toByte()
         }, false)
         delay(6)

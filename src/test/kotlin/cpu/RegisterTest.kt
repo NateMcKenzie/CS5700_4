@@ -6,16 +6,16 @@ import kotlin.test.assertFailsWith
 
 class RegisterTest {
     @Test
-    fun writeReadTest(){
+    fun writeReadTest() {
         val bank = RegisterBank()
-        for (i in 0..7){
+        for (i in 0..7) {
             bank.writeRegister(i.toUByte(), i.toUByte())
             assertEquals(i.toUByte(), bank.readRegister(i.toUByte()))
         }
     }
 
     @Test
-    fun illegalWriteTest(){
+    fun illegalWriteTest() {
         val bank = RegisterBank()
         assertFailsWith<ArrayIndexOutOfBoundsException> {
             bank.writeRegister(8u.toUByte(), 0u.toUByte())
@@ -26,7 +26,7 @@ class RegisterTest {
     }
 
     @Test
-    fun illegalReadTest(){
+    fun illegalReadTest() {
         val bank = RegisterBank()
         assertFailsWith<ArrayIndexOutOfBoundsException> {
             bank.readRegister(8u.toUByte())

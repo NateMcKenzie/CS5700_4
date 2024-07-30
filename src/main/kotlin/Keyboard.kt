@@ -1,7 +1,5 @@
-import java.util.*
-
 class Keyboard {
-    fun read() : UByte{
+    fun read(): UByte {
         val input = readln()
         return stringToByte(input)
     }

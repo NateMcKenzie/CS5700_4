@@ -6,26 +6,25 @@ class MemoryDriver(ROMmode: Boolean = false) {
     var ROMmode = ROMmode
         private set;
 
-
-    fun read(address: Pair<UByte, UByte>) : UByte{
-        if (ROMmode){
+    fun read(address: Pair<UByte, UByte>): UByte {
+        if (ROMmode) {
             return ROM.read(address)
         }
         return RAM.read(address)
     }
 
-    fun write(address: Pair<UByte, UByte>, value: UByte){
-        if (ROMmode){
+    fun write(address: Pair<UByte, UByte>, value: UByte) {
+        if (ROMmode) {
             return ROM.write(address, value)
         }
         return RAM.write(address, value)
     }
 
-    fun flashROM(data: ByteArray){
+    fun flashROM(data: ByteArray) {
         ROM.flash(data)
     }
 
-    fun switch(){
+    fun switch() {
         ROMmode = !ROMmode
     }
 }

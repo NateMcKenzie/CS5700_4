@@ -4,17 +4,17 @@ import kotlin.test.assertFailsWith
 
 class BinaryUtilsTest {
     @Test
-    fun shortToBytesTest(){
-        assertEquals(Pair(0.toUByte(),0.toUByte()), shortToBytes(0u))
-        assertEquals(Pair(0.toUByte(),1.toUByte()), shortToBytes(1u))
-        assertEquals(Pair(1.toUByte(),0.toUByte()), shortToBytes(256u))
-        assertEquals(Pair(255.toUByte(),255.toUByte()), shortToBytes(65535u))
-        assertEquals(Pair(128.toUByte(),0.toUByte()), shortToBytes(32768u))
-        assertEquals(Pair((-1).toUByte(), (-1).toUByte()),shortToBytes(65535u))
+    fun shortToBytesTest() {
+        assertEquals(Pair(0.toUByte(), 0.toUByte()), shortToBytes(0u))
+        assertEquals(Pair(0.toUByte(), 1.toUByte()), shortToBytes(1u))
+        assertEquals(Pair(1.toUByte(), 0.toUByte()), shortToBytes(256u))
+        assertEquals(Pair(255.toUByte(), 255.toUByte()), shortToBytes(65535u))
+        assertEquals(Pair(128.toUByte(), 0.toUByte()), shortToBytes(32768u))
+        assertEquals(Pair((-1).toUByte(), (-1).toUByte()), shortToBytes(65535u))
     }
 
     @Test
-    fun bytesToShortTest(){
+    fun bytesToShortTest() {
         assertEquals(0u, bytesToShort(0.toUByte() to 0.toUByte()))
         assertEquals(1u, bytesToShort(0.toUByte() to 1.toUByte()))
         assertEquals(256u, bytesToShort(1.toUByte() to 0.toUByte()))
@@ -24,31 +24,31 @@ class BinaryUtilsTest {
     }
 
     @Test
-    fun stringToByteTest(){
+    fun stringToByteTest() {
         assertEquals(0xFFu.toUByte(), stringToByte("FF"))
     }
 
     @Test
-    fun stringToByteEmptyTest(){
+    fun stringToByteEmptyTest() {
         assertEquals(0x0u.toUByte(), stringToByte(""))
     }
 
     @Test
-    fun stringToByteShortTest(){
+    fun stringToByteShortTest() {
         assertEquals(0xFu.toUByte(), stringToByte("F"))
     }
 
     @Test
-    fun stringToByteLongTest(){
+    fun stringToByteLongTest() {
         assertEquals(0xFFu.toUByte(), stringToByte("FF0000"))
     }
 
     @Test
-    fun stringToByteInvalidTest(){
-        assertFailsWith<IllegalArgumentException>{
+    fun stringToByteInvalidTest() {
+        assertFailsWith<IllegalArgumentException> {
             stringToByte("HI")
         }
-        assertFailsWith<IllegalArgumentException>{
+        assertFailsWith<IllegalArgumentException> {
             stringToByte("FI")
         }
     }

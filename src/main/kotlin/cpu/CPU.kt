@@ -5,7 +5,7 @@ class CPU {
     val parser = Parser(registers)
     val executive = Executive(parser)
 
-    fun start(){
+    fun start() {
         executive.start()
     }
 

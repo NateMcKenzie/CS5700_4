@@ -1,6 +1,6 @@
 import java.io.File
 
-fun main(){
+fun main() {
     println("Where is the ROM?")
     val romPath = readln()
     val bytes = File(romPath).readBytes()
