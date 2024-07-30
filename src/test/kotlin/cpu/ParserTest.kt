@@ -72,7 +72,7 @@ class ParserTest {
     @Test
     fun setATest(){
         val returned = parser.parse(10u.toUByte())
-        //assertIs<SetA>(returned)
+        assertIs<SetA>(returned)
     }
 
     @Test
