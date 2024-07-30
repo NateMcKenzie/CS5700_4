@@ -36,8 +36,8 @@ class Executive(
             memory.switch()
         }
         val line = Pair(
-            memory.read(shortToBytes(pc)),
-            memory.read(shortToBytes((pc + 1u).toUShort())),
+            memory.read(pc),
+            memory.read((pc + 1u).toUShort()),
         )
         //Restore memory driver state
         if (switched) memory.switch()

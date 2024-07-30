@@ -14,6 +14,6 @@ class WriteTest {
             bytes[it].toByte()
         })
         delay(5)
-        assertEquals(0xA0u.toUByte(), D5700.memory.read(0u.toUByte() to 0u.toUByte()))
+        assertEquals(0xA0u.toUByte(), D5700.memory.read(0u.toUShort()))
     }
 }

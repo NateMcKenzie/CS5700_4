@@ -9,17 +9,17 @@ class MemoryTest {
     @Test
     fun ramReadWriteTest() {
         val ram = Memory(true)
-        ram.write(Pair(0u, 0u), 0xFu)
-        ram.write(Pair(0u, 0xFFu), 0x5u)
-        assertEquals(0xFu, ram.read(Pair(0u, 0u)))
-        assertEquals(0x5u, ram.read(Pair(0u, 0xFFu)))
+        ram.write(0x00u.toUShort(), 0xFu)
+        ram.write(0x00FFu.toUShort(), 0x5u)
+        assertEquals(0xFu, ram.read(0x00u.toUShort()))
+        assertEquals(0x5u, ram.read(0x00FFu.toUShort()))
     }
 
     @Test
     fun romWriteFailsTest() {
         val rom = Memory(false)
         assertFailsWith<IllegalAccessError> {
-            rom.write(Pair(0u, 0u), 1u)
+            rom.write(0x00u.toUShort(), 1u)
         }
     }
 
@@ -29,10 +29,10 @@ class MemoryTest {
         rom.flash(ByteArray(10) { it.toByte() })
         for (i in 0..<10) {
             val iByte = i.toUByte()
-            assertEquals(iByte, rom.read(Pair(0u, iByte)))
+            assertEquals(iByte, rom.read(iByte.toUShort()))
         }
         for (i in 10..<4096) {
-            assertEquals(0u, rom.read(shortToBytes(i.toUShort())))
+            assertEquals(0u, rom.read(i.toUShort()))
         }
     }
 
@@ -40,7 +40,7 @@ class MemoryTest {
     fun fullyAddressableTest() {
         val ram = Memory(true)
         for (i in 0..<4096) {
-            val address = shortToBytes(i.toUShort())
+            val address = i.toUShort()
             val value = i.toUByte()
             ram.write(address, value)
             assertEquals(value, ram.read(address))

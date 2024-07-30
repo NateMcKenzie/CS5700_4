@@ -16,9 +16,9 @@ class ConvertBase10Test {
             bytes[it].toByte()
         })
         delay(4)
-        assertEquals(2u.toUByte(), D5700.memory.read(Pair(0u.toUByte(), 0u.toUByte())))
-        assertEquals(5u.toUByte(), D5700.memory.read(Pair(0u.toUByte(), 1u.toUByte())))
-        assertEquals(2u.toUByte(), D5700.memory.read(Pair(0u.toUByte(), 2u.toUByte())))
+        assertEquals(2u.toUByte(), D5700.memory.read(0u.toUShort()))
+        assertEquals(5u.toUByte(), D5700.memory.read(1u.toUShort()))
+        assertEquals(2u.toUByte(), D5700.memory.read(2u.toUShort()))
     }
 
     @Test
@@ -28,9 +28,9 @@ class ConvertBase10Test {
             bytes[it].toByte()
         })
         delay(4)
-        assertEquals(0u.toUByte(), D5700.memory.read(Pair(0u.toUByte(), 0u.toUByte())))
-        assertEquals(1u.toUByte(), D5700.memory.read(Pair(0u.toUByte(), 1u.toUByte())))
-        assertEquals(5u.toUByte(), D5700.memory.read(Pair(0u.toUByte(), 2u.toUByte())))
+        assertEquals(0u.toUByte(), D5700.memory.read(0u.toUShort()))
+        assertEquals(1u.toUByte(), D5700.memory.read(1u.toUShort()))
+        assertEquals(5u.toUByte(), D5700.memory.read(2u.toUShort()))
     }
 
     @Test
@@ -40,9 +40,9 @@ class ConvertBase10Test {
             bytes[it].toByte()
         })
         delay(4)
-        assertEquals(0u.toUByte(), D5700.memory.read(Pair(0u.toUByte(), 0u.toUByte())))
-        assertEquals(0u.toUByte(), D5700.memory.read(Pair(0u.toUByte(), 1u.toUByte())))
-        assertEquals(8u.toUByte(), D5700.memory.read(Pair(0u.toUByte(), 2u.toUByte())))
+        assertEquals(0u.toUByte(), D5700.memory.read(0u.toUShort()))
+        assertEquals(0u.toUByte(), D5700.memory.read(1u.toUShort()))
+        assertEquals(8u.toUByte(), D5700.memory.read(2u.toUShort()))
     }
 
     @Test
@@ -52,8 +52,8 @@ class ConvertBase10Test {
             bytes[it].toByte()
         })
         delay(8)
-        assertEquals(0u.toUByte(), D5700.memory.read(Pair(0u.toUByte(), 0u.toUByte())))
-        assertEquals(0u.toUByte(), D5700.memory.read(Pair(0u.toUByte(), 1u.toUByte())))
-        assertEquals(8u.toUByte(), D5700.memory.read(Pair(0u.toUByte(), 2u.toUByte())))
+        assertEquals(0u.toUByte(), D5700.memory.read(0u.toUShort()))
+        assertEquals(0u.toUByte(), D5700.memory.read(1u.toUShort()))
+        assertEquals(8u.toUByte(), D5700.memory.read(2u.toUShort()))
     }
 }

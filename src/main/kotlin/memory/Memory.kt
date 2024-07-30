@@ -7,14 +7,14 @@ class Memory(
 ) {
     private val data = MutableList<UByte>(4096) { 0u }
 
-    fun read(address: Pair<UByte, UByte>): UByte {
-        val index = bytesToShort(address).toInt()
+    fun read(address: UShort): UByte {
+        val index = address.toInt()
         return data[index]
     }
 
-    fun write(address: Pair<UByte, UByte>, value: UByte) {
+    fun write(address: UShort, value: UByte) {
         if (writable) {
-            val index = bytesToShort(address).toInt()
+            val index = address.toInt()
             data[index] = value
         } else {
             throw IllegalAccessError("This memory device is read-only")

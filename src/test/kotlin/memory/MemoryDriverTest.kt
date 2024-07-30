@@ -12,10 +12,10 @@ class MemoryDriverTest {
         if (driver.ROMmode) {
             driver.switch()
         }
-        driver.write(Pair(0u, 0u), 0xFu)
-        driver.write(Pair(0u, 0xFFu), 0x5u)
-        assertEquals(0xFu, driver.read(Pair(0u, 0u)))
-        assertEquals(0x5u, driver.read(Pair(0u, 0xFFu)))
+        driver.write(0x00u.toUShort(), 0xFu)
+        driver.write(0x00FFu.toUShort(), 0x5u)
+        assertEquals(0xFu, driver.read(0x00u.toUShort()))
+        assertEquals(0x5u, driver.read(0x00FFu.toUShort()))
     }
 
     @Test
@@ -25,7 +25,7 @@ class MemoryDriverTest {
             driver.switch()
         }
         assertFailsWith<IllegalAccessError> {
-            driver.write(Pair(0u, 0u), 1u)
+            driver.write(0x00u.toUShort(), 1u)
         }
     }
 
@@ -38,10 +38,10 @@ class MemoryDriverTest {
         }
         for (i in 0..<10) {
             val iByte = i.toUByte()
-            assertEquals(iByte, driver.read(Pair(0u, iByte)))
+            assertEquals(iByte, driver.read(iByte.toUShort()))
         }
         for (i in 10..<4096) {
-            assertEquals(0u, driver.read(shortToBytes(i.toUShort())))
+            assertEquals(0u, driver.read(i.toUShort()))
         }
     }
 
@@ -54,16 +54,16 @@ class MemoryDriverTest {
             driver.switch()
         }
         for (i in 0..<10) {
-            driver.write(shortToBytes(i.toUShort()), (i * 2).toUByte())
+            driver.write(i.toUShort(), (i * 2).toUByte())
         }
 
         //Ensure both read separately
         for (i in 0..<10) {
-            assertEquals((i * 2).toUByte(), driver.read(shortToBytes(i.toUShort())))
+            assertEquals((i * 2).toUByte(), driver.read(i.toUShort()))
         }
         driver.switch()
         for (i in 0..<10) {
-            assertEquals(i.toUByte(), driver.read(shortToBytes(i.toUShort())))
+            assertEquals(i.toUByte(), driver.read(i.toUShort()))
         }
     }
 }
