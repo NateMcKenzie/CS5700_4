@@ -96,7 +96,7 @@ class ParserTest {
     @Test
     fun convertASCIITest() {
         val returned = parser.parse(14u.toUByte())
-        //assertIs<ConvertASCII>(returned)
+        assertIs<ConvertASCII>(returned)
     }
 
     @Test
