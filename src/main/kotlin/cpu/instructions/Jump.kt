@@ -1,15 +1,16 @@
 package cpu.instructions
 
+import bytesToShort
 import cpu.Nibbled
 import cpu.RegisterBank
 
-class Jump(private val registerBank: RegisterBank) : Instruction(registerBank) {
-    private lateinit var newPC: Pair<UByte, UByte>
+class Jump(registerBank: RegisterBank) : Instruction(registerBank) {
+    private var newPC: UShort = 0u
     override fun mainFunction(nibbleds: Pair<Nibbled, Nibbled>) {
-        newPC = Pair(nibbleds.first.second, nibbleds.second.byte())
+        newPC = bytesToShort(Pair(nibbleds.first.second, nibbleds.second.byte()))
     }
 
-    override fun handleCounter(pc: Pair<UByte, UByte>): Pair<UByte, UByte> {
+    override fun handleCounter(pc: UShort): UShort {
         return newPC
     }
 }

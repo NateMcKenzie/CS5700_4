@@ -10,8 +10,8 @@ class JumpTest {
     fun jumpTest() {
         val instruction = Jump(RegisterBank())
         val newPC =
-            instruction.run(Pair(Nibbled(0x55u.toUByte()), Nibbled(0x55u.toUByte())), Pair(0u.toUByte(), 0u.toUByte()))
-        assertEquals(Pair(0x05u.toUByte(), 0x55u.toUByte()), newPC)
+            instruction.run(Pair(Nibbled(0x55u.toUByte()), Nibbled(0x55u.toUByte())), 0u.toUShort())
+        assertEquals(0x0555u.toUShort(), newPC)
     }
 
     @Test
@@ -19,8 +19,8 @@ class JumpTest {
         val instruction = Jump(RegisterBank())
         val newPC = instruction.run(
             Pair(Nibbled(0x55u.toUByte()), Nibbled(0x55u.toUByte())),
-            Pair(0xFFu.toUByte(), 6u.toUByte())
+            0xFF06u.toUShort()
         )
-        assertEquals(Pair(0x05u.toUByte(), 0x55u.toUByte()), newPC)
+        assertEquals(0x0555u.toUShort(), newPC)
     }
 }

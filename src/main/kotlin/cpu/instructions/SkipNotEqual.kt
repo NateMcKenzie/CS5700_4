@@ -13,6 +13,6 @@ class SkipNotEqual(private val registerBank: RegisterBank) : Instruction(registe
         amount = if (operand1 != operand2) 4 else 2
     }
 
-    override fun handleCounter(pc: Pair<UByte, UByte>) =
-        shortToBytes(((bytesToShort(pc) + amount.toUShort()).toUShort()))
+    override fun handleCounter(pc: UShort) =
+        (pc + amount.toUShort()).toUShort()
 }

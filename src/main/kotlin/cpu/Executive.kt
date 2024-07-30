@@ -49,8 +49,8 @@ class Executive(
 
         val nibbleds = Pair(Nibbled(line.first), Nibbled(line.second))
         val instruction = parser.parse(nibbleds.first.first)
-        val newPC = instruction.run(nibbleds, shortToBytes(pc))
-        pc = bytesToShort(newPC)
+        val newPC = instruction.run(nibbleds, pc)
+        pc = newPC
         if (++timerTrack % 8 == 0) {
             D5700.cpu.decrementTimer()
         }
