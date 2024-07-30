@@ -3,10 +3,13 @@ package cpu.instructions
 import D5700
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
+import org.junit.jupiter.api.parallel.Execution
+import org.junit.jupiter.api.parallel.ExecutionMode
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
+@Execution(ExecutionMode.SAME_THREAD)
 class SwitchMemoryTest {
     @Test
     fun switchMemoryTest() = runBlocking {

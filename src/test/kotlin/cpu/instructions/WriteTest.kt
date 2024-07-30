@@ -12,8 +12,8 @@ class WriteTest {
         val bytes = arrayOf(0x00, 0xA0, 0x40, 0x00)
         D5700.run(ByteArray(4) {
             bytes[it].toByte()
-        }, ROMmode = false)
-        delay(4)
+        })
+        delay(5)
         assertEquals(0xA0u.toUByte(), D5700.memory.read(0u.toUByte() to 0u.toUByte()))
     }
 }
