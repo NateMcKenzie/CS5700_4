@@ -8,4 +8,8 @@ class CPU {
     fun start(){
         executive.start()
     }
+
+    fun decrementTimer() {
+        registers.timer = (registers.timer - 1u).toUByte()
+    }
 }
