@@ -90,7 +90,7 @@ class ParserTest {
     @Test
     fun convertBase10Test() {
         val returned = parser.parse(13u.toUByte())
-        //assertIs<ConvertBase10>(returned)
+        assertIs<ConvertBase10>(returned)
     }
 
     @Test
