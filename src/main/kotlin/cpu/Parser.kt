@@ -19,7 +19,7 @@ class Parser(registerBank: RegisterBank) {
         12u.toUByte() to ReadT(registerBank),
         13u.toUByte() to ConvertBase10(registerBank),
         14u.toUByte() to ConvertASCII(registerBank),
-        //15u.toUByte() to Draw(registerBank),
+        15u.toUByte() to Draw(registerBank),
     )
 
     fun parse(input: UByte): Instruction {

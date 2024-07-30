@@ -4,8 +4,9 @@ import bytesToShort
 
 class Memory(
     val writable: Boolean = true,
+    size : Int = 4096
 ) {
-    private val data = MutableList<UByte>(4096) { 0u }
+    private val data = MutableList<UByte>(size) { 0u }
 
     fun read(address: UShort): UByte {
         val index = address.toInt()

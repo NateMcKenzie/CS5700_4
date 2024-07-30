@@ -102,7 +102,7 @@ class ParserTest {
     @Test
     fun drawTest() {
         val returned = parser.parse(15u.toUByte())
-        //assertIs<Draw>(returned)
+        assertIs<Draw>(returned)
     }
 
     @Test

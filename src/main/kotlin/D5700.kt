@@ -5,7 +5,7 @@ object D5700 {
     lateinit var memory: MemoryDriver
     lateinit var cpu: CPU
     val keyboard = Keyboard()
-    //val screen = Screen()
+    val screen = Screen()
 
     fun run(data: ByteArray, ROMmode: Boolean = false) {
         memory = MemoryDriver(ROMmode = ROMmode)
@@ -14,7 +14,7 @@ object D5700 {
         cpu.start()
     }
 
-    fun screenWrite(value: Byte, row: Byte, col: Byte) {
-        TODO("Not implemented yet")
+    fun screenWrite(value: UByte, row: UByte, col: UByte) {
+        screen.write(value, row, col)
     }
 }
