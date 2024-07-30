@@ -60,13 +60,13 @@ class ParserTest {
     @Test
     fun skipEqualTest(){
         val returned = parser.parse(8u.toUByte())
-        //assertIs<SkipEqual>(returned)
+        assertIs<SkipEqual>(returned)
     }
 
     @Test
     fun skipNotEqualTest(){
         val returned = parser.parse(9u.toUByte())
-        //assertIs<SkipNotEqual>(returned)
+        assertIs<SkipNotEqual>(returned)
     }
 
     @Test
