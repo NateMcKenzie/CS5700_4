@@ -1,4 +1,5 @@
 fun shortToBytes(short: UShort): Pair<UByte, UByte> {
+    TODO("This function is no longer used")
     val first = short.toUInt().shr(8)
     val second = short - first.shl(8)
     return Pair(first.toUByte(), second.toUByte())
