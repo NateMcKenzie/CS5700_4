@@ -13,9 +13,9 @@ class ExecutiveTest {
         D5700.run(ByteArray(18) {
             bytes[it].toByte()
         })
-        delay(3)
+        delay(2)
         assertEquals(15u.toUByte(), D5700.cpu.registers.timer)
-        delay(17)
+        delay(16)
         assertEquals(14u.toUByte(), D5700.cpu.registers.timer)
     }
 }
