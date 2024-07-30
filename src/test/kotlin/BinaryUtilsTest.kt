@@ -39,6 +39,11 @@ class BinaryUtilsTest {
     }
 
     @Test
+    fun stringToByteLongTest(){
+        assertEquals(0xFFu.toUByte(), stringToByte("FF0000"))
+    }
+
+    @Test
     fun stringToByteInvalidTest(){
         assertFailsWith<IllegalArgumentException>{
             stringToByte("HI")

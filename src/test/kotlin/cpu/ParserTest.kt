@@ -48,13 +48,13 @@ class ParserTest {
     @Test
     fun readKeyboardTest(){
         val returned = parser.parse(6u.toUByte())
-        //assertIs<ReadKeyboard>(returned)
+        assertIs<ReadKeyboard>(returned)
     }
 
     @Test
     fun switchMemoryTest(){
         val returned = parser.parse(7u.toUByte())
-        //assertIs<SwitchMemory>(returned)
+        assertIs<SwitchMemory>(returned)
     }
 
     @Test
