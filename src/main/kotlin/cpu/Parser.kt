@@ -9,7 +9,7 @@ class Parser (registerBank : RegisterBank){
         2u.toUByte() to Subtract(registerBank),
         3u.toUByte() to Read(registerBank),
         4u.toUByte() to Write(registerBank),
-        //5u.toUByte() to Jump(registerBank),
+        5u.toUByte() to Jump(registerBank),
         //6u.toUByte() to ReadKeyboard(registerBank),
         //7u.toUByte() to SwitchMemory(registerBank),
         //8u.toUByte() to SkipEqual(registerBank),

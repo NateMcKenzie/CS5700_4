@@ -42,7 +42,7 @@ class ParserTest {
     @Test
     fun jumpTest(){
         val returned = parser.parse(5u.toUByte())
-        //assertIs<Jump>(returned)
+        assertIs<Jump>(returned)
     }
 
     @Test
