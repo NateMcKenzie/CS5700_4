@@ -84,7 +84,7 @@ class ParserTest {
     @Test
     fun readTTest(){
         val returned = parser.parse(12u.toUByte())
-        //assertIs<ReadT>(returned)
+        assertIs<ReadT>(returned)
     }
 
     @Test

@@ -16,7 +16,7 @@ class Parser (registerBank : RegisterBank){
         9u.toUByte() to SkipNotEqual(registerBank),
         10u.toUByte() to SetA(registerBank),
         11u.toUByte() to SetT(registerBank),
-        //12u.toUByte() to ReadT(registerBank),
+        12u.toUByte() to ReadT(registerBank),
         //13u.toUByte() to ConvertBase10(registerBank),
         //14u.toUByte() to ConvertASCII(registerBank),
         //15u.toUByte() to Draw(registerBank),
