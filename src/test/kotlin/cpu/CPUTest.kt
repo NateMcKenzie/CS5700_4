@@ -7,12 +7,12 @@ import memory.MemoryDriver
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class ExecutiveTest {
+class CPUTest {
     @Test
     fun timerTest() = runBlocking {
         val memory = MemoryDriver()
         val cpu = CPU()
-        
+
         val bytes = arrayOf(
             0xB0,
             0xF0,
