@@ -9,18 +9,18 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class ReadTest {
-    //Note: relies on Reading during ROM mode.
     @Test
     fun readTest() = runBlocking {
-        val memory = MemoryDriver()
+        //Note: relies on Reading during ROM mode.
+        val memory = MemoryDriver(ROMmode = true)
         val cpu = CPU()
 
-        val bytes = arrayOf(0x30, 0x00, 0x00, 0xAB)
-        memory.flashROM(ByteArray(4) {
+        val bytes = arrayOf(0xA0, 0x05, 0x31, 0x00, 0x00, 0xAB)
+        memory.flashROM(ByteArray(6) {
             bytes[it].toByte()
         })
         D5700.runInject(memory, cpu)
-        delay(4)
-        assertEquals(0xABu.toUByte(), cpu.readRegister(0u.toUByte()))
+        delay(6)
+        assertEquals(0xABu.toUByte(), cpu.readRegister(1u.toUByte()))
     }
 }

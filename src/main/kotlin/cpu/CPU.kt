@@ -55,7 +55,7 @@ class CPU {
         }
     }
 
-    fun decrementTimer() {
+    private fun decrementTimer() {
         if (registers.timer > 0u)
             registers.timer = (registers.timer - 1u).toUByte()
     }

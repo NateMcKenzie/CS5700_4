@@ -2,11 +2,11 @@ import cpu.CPU
 import memory.MemoryDriver
 
 object D5700 {
-    lateinit private var memory: MemoryDriver
-    val ROMmode get() = memory.ROMmode
-    lateinit private var cpu: CPU
+    private lateinit var memory: MemoryDriver
+    private lateinit var cpu: CPU
     private val keyboard = Keyboard()
     private val screen = Screen()
+    val ROMmode get() = memory.ROMmode
 
     fun run(data: ByteArray) {
         memory = MemoryDriver(ROMmode = false)
