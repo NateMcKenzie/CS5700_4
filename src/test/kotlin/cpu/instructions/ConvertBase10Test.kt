@@ -2,8 +2,6 @@ package cpu.instructions
 
 import D5700
 import cpu.CPU
-import cpu.Nibbled
-import cpu.RegisterBank
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import memory.MemoryDriver
@@ -12,7 +10,7 @@ import kotlin.test.assertEquals
 
 class ConvertBase10Test {
     @Test
-    fun convertTest() = runBlocking{
+    fun convertTest() = runBlocking {
         val memory = MemoryDriver()
         val cpu = CPU()
 
@@ -28,7 +26,7 @@ class ConvertBase10Test {
     }
 
     @Test
-    fun convertTensOnlyTest() = runBlocking{
+    fun convertTensOnlyTest() = runBlocking {
         val memory = MemoryDriver()
         val cpu = CPU()
 
@@ -44,7 +42,7 @@ class ConvertBase10Test {
     }
 
     @Test
-    fun convertOnesOnlyTest() = runBlocking{
+    fun convertOnesOnlyTest() = runBlocking {
         val memory = MemoryDriver()
         val cpu = CPU()
 
@@ -60,7 +58,7 @@ class ConvertBase10Test {
     }
 
     @Test
-    fun convertOverwriteTest() = runBlocking{
+    fun convertOverwriteTest() = runBlocking {
         val memory = MemoryDriver()
         val cpu = CPU()
 

@@ -9,11 +9,30 @@ import kotlin.test.assertEquals
 
 class ExecutiveTest {
     @Test
-    fun timerTest() = runBlocking{
+    fun timerTest() = runBlocking {
         val memory = MemoryDriver()
         val cpu = CPU()
 
-        val bytes = arrayOf(0xB0, 0xF0, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01)
+        val bytes = arrayOf(
+            0xB0,
+            0xF0,
+            0x00,
+            0x01,
+            0x00,
+            0x01,
+            0x00,
+            0x01,
+            0x00,
+            0x01,
+            0x00,
+            0x01,
+            0x00,
+            0x01,
+            0x00,
+            0x01,
+            0x00,
+            0x01
+        )
         memory.flashROM(ByteArray(18) {
             bytes[it].toByte()
         })

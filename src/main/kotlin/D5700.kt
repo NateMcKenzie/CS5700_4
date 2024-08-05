@@ -15,7 +15,7 @@ object D5700 {
         cpu.start()
     }
 
-    fun runInject(memory: MemoryDriver, cpu: CPU){
+    fun runInject(memory: MemoryDriver, cpu: CPU) {
         this.memory = memory
         this.cpu = cpu
         cpu.start()
