@@ -20,7 +20,7 @@ class SkipEqualTest {
         })
         D5700.runInject(memory, cpu)
         delay(8)
-        assertEquals(1u.toUByte(), cpu.registers.readRegister(0u.toUByte()))
+        assertEquals(1u.toUByte(), cpu.readRegister(0u.toUByte()))
     }
 
     @Test
@@ -34,6 +34,6 @@ class SkipEqualTest {
         })
         D5700.runInject(memory, cpu)
         delay(8)
-        assertEquals(0xFu.toUByte(), cpu.registers.readRegister(0u.toUByte()))
+        assertEquals(0xFu.toUByte(), cpu.readRegister(0u.toUByte()))
     }
 }

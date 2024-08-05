@@ -20,7 +20,7 @@ class SubtractTest {
         })
         D5700.runInject(memory, cpu)
         delay(6)
-        assertEquals(3u.toUByte(), cpu.registers.readRegister(3u.toUByte()))
+        assertEquals(3u.toUByte(), cpu.readRegister(3u.toUByte()))
     }
 
     @Test
@@ -34,6 +34,6 @@ class SubtractTest {
         })
         D5700.runInject(memory, cpu)
         delay(6)
-        assertEquals(0xFFu.toUByte(), cpu.registers.readRegister(3u.toUByte()))
+        assertEquals(0xFFu.toUByte(), cpu.readRegister(3u.toUByte()))
     }
 }

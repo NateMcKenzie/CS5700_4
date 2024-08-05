@@ -20,6 +20,6 @@ class SetTTest {
         })
         D5700.runInject(memory, cpu)
         delay(2)
-        assertEquals(0xFFu.toUByte(), cpu.registers.timer)
+        assertEquals(0xFFu.toUByte(), cpu.timer)
     }
 }

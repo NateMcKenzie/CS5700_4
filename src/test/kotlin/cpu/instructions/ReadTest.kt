@@ -21,6 +21,6 @@ class ReadTest {
         })
         D5700.runInject(memory, cpu)
         delay(4)
-        assertEquals(0xABu.toUByte(), cpu.registers.readRegister(0u.toUByte()))
+        assertEquals(0xABu.toUByte(), cpu.readRegister(0u.toUByte()))
     }
 }

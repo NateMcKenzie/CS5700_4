@@ -20,7 +20,7 @@ class AddTest {
         })
         D5700.runInject(memory, cpu)
         delay(6)
-        assertEquals(3u.toUByte(), cpu.registers.readRegister(3u.toUByte()))
+        assertEquals(3u.toUByte(), cpu.readRegister(3u.toUByte()))
     }
 
     @Test
@@ -34,6 +34,6 @@ class AddTest {
         })
         D5700.runInject(memory, cpu)
         delay(6)
-        assertEquals(1u.toUByte(), cpu.registers.readRegister(3u.toUByte()))
+        assertEquals(1u.toUByte(), cpu.readRegister(3u.toUByte()))
     }
 }

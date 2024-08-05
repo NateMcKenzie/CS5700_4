@@ -19,8 +19,8 @@ class ExecutiveTest {
         })
         D5700.runInject(memory, cpu)
         delay(2)
-        assertEquals(15u.toUByte(), cpu.registers.timer)
+        assertEquals(15u.toUByte(), cpu.timer)
         delay(16)
-        assertEquals(14u.toUByte(), cpu.registers.timer)
+        assertEquals(14u.toUByte(), cpu.timer)
     }
 }

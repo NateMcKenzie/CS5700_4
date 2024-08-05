@@ -7,7 +7,6 @@ import kotlinx.coroutines.runBlocking
 import memory.MemoryDriver
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertFails
 
 class ConvertASCIITest {
     @Test
@@ -21,7 +20,7 @@ class ConvertASCIITest {
         })
         D5700.runInject(memory, cpu)
         delay(4)
-        assertEquals(65u.toUByte(), cpu.registers.readRegister(1u.toUByte()))
+        assertEquals(65u.toUByte(), cpu.readRegister(1u.toUByte()))
     }
 
     @Test
@@ -35,6 +34,6 @@ class ConvertASCIITest {
         })
         D5700.runInject(memory, cpu)
         delay(4)
-        assertEquals(51u.toUByte(), cpu.registers.readRegister(1u.toUByte()))
+        assertEquals(51u.toUByte(), cpu.readRegister(1u.toUByte()))
     }
 }

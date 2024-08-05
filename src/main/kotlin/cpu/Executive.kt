@@ -6,7 +6,7 @@ import kotlin.concurrent.timer
 
 class Executive(
     parserReference: Parser,
-    private val cpu: CPU
+    private val cpu: CPU,
 ) {
     private var pc: UShort = 0u
     private lateinit var clock: Timer
@@ -21,7 +21,7 @@ class Executive(
         }
     }
 
-    fun stop() {
+    private fun stop() {
         clock.cancel()
     }
 
