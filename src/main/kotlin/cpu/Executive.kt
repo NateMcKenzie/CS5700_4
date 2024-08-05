@@ -6,6 +6,7 @@ import kotlin.concurrent.timer
 
 class Executive(
     parserReference: Parser,
+    private val cpu: CPU
 ) {
     private var pc: UShort = 0u
     private lateinit var clock: Timer
@@ -25,20 +26,19 @@ class Executive(
     }
 
     private fun mainLoop() {
-        val memory = D5700.memory
         var switched = false
 
         //Read instruction from ROM
-        if (!memory.ROMmode) {
+        if (!D5700.ROMmode) {
             switched = true
-            memory.switch()
+            D5700.switchROMmode()
         }
         val line = Pair(
-            memory.read(pc),
-            memory.read((pc + 1u).toUShort()),
+            D5700.readMemory(pc),
+            D5700.readMemory((pc + 1u).toUShort()),
         )
         //Restore memory driver state
-        if (switched) memory.switch()
+        if (switched) D5700.switchROMmode()
 
         if (line.first == 0u.toUByte() && line.second == 0u.toUByte()) {
             stop()
@@ -50,7 +50,7 @@ class Executive(
         val newPC = instruction.run(nibbleds, pc)
         pc = newPC
         if (++timerTrack % 8 == 0) {
-            D5700.cpu.decrementTimer()
+            cpu.decrementTimer()
         }
     }
 }

@@ -9,7 +9,7 @@ class MemoryDriverTest {
     fun ramReadWriteTest() {
         val driver = MemoryDriver()
         if (driver.ROMmode) {
-            driver.switch()
+            driver.switchROMmode()
         }
         driver.write(0x00u.toUShort(), 0xFu)
         driver.write(0x00FFu.toUShort(), 0x5u)
@@ -21,7 +21,7 @@ class MemoryDriverTest {
     fun romWriteFailsTest() {
         val driver = MemoryDriver()
         if (!driver.ROMmode) {
-            driver.switch()
+            driver.switchROMmode()
         }
         assertFailsWith<IllegalAccessError> {
             driver.write(0x00u.toUShort(), 1u)
@@ -33,7 +33,7 @@ class MemoryDriverTest {
         val driver = MemoryDriver()
         driver.flashROM(ByteArray(10) { it.toByte() })
         if (!driver.ROMmode) {
-            driver.switch()
+            driver.switchROMmode()
         }
         for (i in 0..<10) {
             val iByte = i.toUByte()
@@ -50,7 +50,7 @@ class MemoryDriverTest {
         val driver = MemoryDriver()
         driver.flashROM(ByteArray(10) { it.toByte() })
         if (driver.ROMmode) {
-            driver.switch()
+            driver.switchROMmode()
         }
         for (i in 0..<10) {
             driver.write(i.toUShort(), (i * 2).toUByte())
@@ -60,7 +60,7 @@ class MemoryDriverTest {
         for (i in 0..<10) {
             assertEquals((i * 2).toUByte(), driver.read(i.toUShort()))
         }
-        driver.switch()
+        driver.switchROMmode()
         for (i in 0..<10) {
             assertEquals(i.toUByte(), driver.read(i.toUShort()))
         }

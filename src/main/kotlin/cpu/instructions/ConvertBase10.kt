@@ -12,8 +12,8 @@ class ConvertBase10(private val registerBank: RegisterBank) : Instruction(regist
         val hundreds = value / 100u
         val tens = (value / 10u) % 10u
         val ones = value % 10u
-        D5700.memory.write(memoryAddress, hundreds.toUByte())
-        D5700.memory.write((memoryAddress + 1u).toUShort(), tens.toUByte())
-        D5700.memory.write((memoryAddress + 2u).toUShort(), ones.toUByte())
+        D5700.writeMemory(memoryAddress, hundreds.toUByte())
+        D5700.writeMemory((memoryAddress + 1u).toUShort(), tens.toUByte())
+        D5700.writeMemory((memoryAddress + 2u).toUShort(), ones.toUByte())
     }
 }

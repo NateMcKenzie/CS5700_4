@@ -9,6 +9,6 @@ class Draw(private val registerBank: RegisterBank) : Instruction(registerBank) {
         val value = registerBank.readRegister(nibbleds.first.second)
         val row = nibbleds.second.first
         val col = nibbleds.second.second
-        D5700.screenWrite(value, row, col)
+        D5700.writeScreen(value, row, col)
     }
 }

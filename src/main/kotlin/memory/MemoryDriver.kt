@@ -24,7 +24,7 @@ class MemoryDriver(ROMmode: Boolean = false) {
         ROM.flash(data)
     }
 
-    fun switch() {
+    fun switchROMmode() {
         ROMmode = !ROMmode
     }
 }

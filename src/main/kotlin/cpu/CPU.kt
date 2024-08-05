@@ -3,7 +3,7 @@ package cpu
 class CPU {
     val registers = RegisterBank()
     val parser = Parser(registers)
-    val executive = Executive(parser)
+    val executive = Executive(parser, this)
 
     fun start() {
         executive.start()
