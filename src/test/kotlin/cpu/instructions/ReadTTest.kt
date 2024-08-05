@@ -2,6 +2,8 @@ package cpu.instructions
 
 import D5700
 import cpu.CPU
+import cpu.Nibbled
+import cpu.RegisterBank
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import memory.MemoryDriver
@@ -10,16 +12,12 @@ import kotlin.test.assertEquals
 
 class ReadTTest {
     @Test
-    fun readTTest() = runBlocking {
-        val memory = MemoryDriver()
-        val cpu = CPU()
-
-        val bytes = arrayOf(0xBF, 0xFF, 0xC7, 0xFF)
-        memory.flashROM(ByteArray(4) {
-            bytes[it].toByte()
-        })
-        D5700.runInject(memory, cpu)
-        delay(4)
-        assertEquals(0xFFu.toUByte(), cpu.readRegister(0x7u.toUByte()))
+    fun readTTest(){
+        val registers = RegisterBank()
+        registers.timer = 0xFFu.toUByte()
+        val byteCode = Pair(Nibbled( 0xC7.toUByte()),Nibbled( 0xFF.toUByte()))
+        val instruction = ReadT(registers)
+        instruction.run(byteCode, 0u.toUShort())
+        assertEquals(0xFFu.toUByte(), registers.readRegister(0x7u.toUByte()))
     }
 }

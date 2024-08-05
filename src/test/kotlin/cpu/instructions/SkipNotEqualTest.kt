@@ -2,6 +2,8 @@ package cpu.instructions
 
 import D5700
 import cpu.CPU
+import cpu.Nibbled
+import cpu.RegisterBank
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import memory.MemoryDriver
@@ -10,30 +12,24 @@ import kotlin.test.assertEquals
 
 class SkipNotEqualTest {
     @Test
-    fun unequalTest() = runBlocking {
-        val memory = MemoryDriver()
-        val cpu = CPU()
-
-        val bytes = arrayOf(0x00, 0x01, 0x01, 0x02, 0x90, 0x10, 0x00, 0x0F)
-        memory.flashROM(ByteArray(8) {
-            bytes[it].toByte()
-        })
-        D5700.runInject(memory, cpu)
-        delay(8)
-        assertEquals(1u.toUByte(), cpu.readRegister(0u.toUByte()))
+    fun equalTest() {
+        val registers = RegisterBank()
+        registers.writeRegister(0u.toUByte(), 1u.toUByte())
+        registers.writeRegister(1u.toUByte(), 1u.toUByte())
+        val byteCode = Pair(Nibbled( 0x80.toUByte()), Nibbled( 0x10.toUByte()))
+        val instruction = SkipNotEqual(registers)
+        val pc = instruction.run(byteCode, 0u.toUShort())
+        assertEquals(2u.toUShort(), pc)
     }
 
     @Test
-    fun equalTest() = runBlocking {
-        val memory = MemoryDriver()
-        val cpu = CPU()
-
-        val bytes = arrayOf(0x00, 0x01, 0x01, 0x01, 0x90, 0x10, 0x00, 0x0F)
-        memory.flashROM(ByteArray(8) {
-            bytes[it].toByte()
-        })
-        D5700.runInject(memory, cpu)
-        delay(8)
-        assertEquals(0xFu.toUByte(), cpu.readRegister(0u.toUByte()))
+    fun unequalTest() {
+        val registers = RegisterBank()
+        registers.writeRegister(0u.toUByte(), 1u.toUByte())
+        registers.writeRegister(1u.toUByte(), 2u.toUByte())
+        val byteCode = Pair(Nibbled( 0x80.toUByte()), Nibbled( 0x10.toUByte()))
+        val instruction = SkipNotEqual(registers)
+        val pc = instruction.run(byteCode, 0u.toUShort())
+        assertEquals(4u.toUShort(), pc)
     }
 }

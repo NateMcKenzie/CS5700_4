@@ -2,6 +2,8 @@ package cpu.instructions
 
 import D5700
 import cpu.CPU
+import cpu.Nibbled
+import cpu.RegisterBank
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import memory.MemoryDriver
@@ -10,30 +12,24 @@ import kotlin.test.assertEquals
 
 class SubtractTest {
     @Test
-    fun subtractTest() = runBlocking {
-        val memory = MemoryDriver()
-        val cpu = CPU()
-
-        val bytes = arrayOf(0x00, 0x05, 0x01, 0x02, 0x20, 0x13)
-        memory.flashROM(ByteArray(6) {
-            bytes[it].toByte()
-        })
-        D5700.runInject(memory, cpu)
-        delay(6)
-        assertEquals(3u.toUByte(), cpu.readRegister(3u.toUByte()))
+    fun subtractTest() {
+        val registers = RegisterBank()
+        registers.writeRegister(0u.toUByte(), 5u.toUByte())
+        registers.writeRegister(1u.toUByte(), 2u.toUByte())
+        val byteCode = Pair(Nibbled( 0x20.toUByte()),Nibbled( 0x13.toUByte()))
+        val instruction = Subtract(registers)
+        instruction.run(byteCode, 0u.toUShort())
+        assertEquals(3u.toUByte(), registers.readRegister(3u.toUByte()))
     }
 
     @Test
-    fun overflowTest() = runBlocking {
-        val memory = MemoryDriver()
-        val cpu = CPU()
-
-        val bytes = arrayOf(0x00, 0x01, 0x01, 0x02, 0x20, 0x13)
-        memory.flashROM(ByteArray(6) {
-            bytes[it].toByte()
-        })
-        D5700.runInject(memory, cpu)
-        delay(6)
-        assertEquals(0xFFu.toUByte(), cpu.readRegister(3u.toUByte()))
+    fun overflowTest() {
+        val registers = RegisterBank()
+        registers.writeRegister(0u.toUByte(), 1u.toUByte())
+        registers.writeRegister(1u.toUByte(), 2u.toUByte())
+        val byteCode = Pair(Nibbled(0x20.toUByte()),Nibbled( 0x13.toUByte()))
+        val instruction = Subtract(registers)
+        instruction.run(byteCode, 0u.toUShort())
+        assertEquals(0xFFu.toUByte(), registers.readRegister(3u.toUByte()))
     }
 }

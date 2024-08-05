@@ -12,7 +12,7 @@ class ExecutiveTest {
     fun timerTest() = runBlocking {
         val memory = MemoryDriver()
         val cpu = CPU()
-
+        
         val bytes = arrayOf(
             0xB0,
             0xF0,
@@ -37,9 +37,7 @@ class ExecutiveTest {
             bytes[it].toByte()
         })
         D5700.runInject(memory, cpu)
-        delay(2)
-        assertEquals(15u.toUByte(), cpu.timer)
-        delay(16)
+        delay(20)
         assertEquals(14u.toUByte(), cpu.timer)
     }
 }

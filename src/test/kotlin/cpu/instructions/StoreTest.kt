@@ -2,6 +2,8 @@ package cpu.instructions
 
 import D5700
 import cpu.CPU
+import cpu.Nibbled
+import cpu.RegisterBank
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import memory.MemoryDriver
@@ -10,30 +12,20 @@ import kotlin.test.assertEquals
 
 class StoreTest {
     @Test
-    fun storeTest() = runBlocking {
-        val memory = MemoryDriver()
-        val cpu = CPU()
-
-        val bytes = arrayOf(0x00, 0xff)
-        memory.flashROM(ByteArray(2) {
-            bytes[it].toByte()
-        })
-        D5700.runInject(memory, cpu)
-        delay(2)
-        assertEquals(0xffu.toUByte(), cpu.readRegister(0u.toUByte()))
+    fun storeTest() {
+        val registers = RegisterBank()
+        val byteCode = Pair(Nibbled( 0x00.toUByte()),Nibbled( 0xff.toUByte()))
+        val instruction = Store(registers)
+        instruction.run(byteCode, 0u.toUShort())
+        assertEquals(0xffu.toUByte(), registers.readRegister(0u.toUByte()))
     }
 
     @Test
     fun addressTest() = runBlocking {
-        val memory = MemoryDriver()
-        val cpu = CPU()
-
-        val bytes = arrayOf(0x07, 0xcd)
-        memory.flashROM(ByteArray(2) {
-            bytes[it].toByte()
-        })
-        D5700.runInject(memory, cpu)
-        delay(2)
-        assertEquals(0xcdu.toUByte(), cpu.readRegister(7u.toUByte()))
+        val registers =  RegisterBank()
+        val byteCode = Pair(Nibbled( 0x07.toUByte()),Nibbled( 0xcd.toUByte()))
+        val instruction = Store(registers)
+        instruction.run(byteCode, 0u.toUShort())
+        assertEquals(0xcdu.toUByte(), registers.readRegister(7u.toUByte()))
     }
 }
