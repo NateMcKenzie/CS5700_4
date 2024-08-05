@@ -1,8 +1,6 @@
 package cpu
 
 import D5700
-import bytesToShort
-import shortToBytes
 import java.util.*
 import kotlin.concurrent.timer
 

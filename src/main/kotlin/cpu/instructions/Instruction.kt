@@ -1,9 +1,7 @@
 package cpu.instructions
 
-import bytesToShort
 import cpu.Nibbled
 import cpu.RegisterBank
-import shortToBytes
 
 abstract class Instruction(registerBank: RegisterBank) {
     fun run(nibbleds: Pair<Nibbled, Nibbled>, pc: UShort): UShort {

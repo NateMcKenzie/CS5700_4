@@ -3,7 +3,6 @@ package cpu.instructions
 import D5700
 import cpu.Nibbled
 import cpu.RegisterBank
-import shortToBytes
 
 class Write(private val registerBank: RegisterBank) : Instruction(registerBank) {
     override fun mainFunction(nibbleds: Pair<Nibbled, Nibbled>) {

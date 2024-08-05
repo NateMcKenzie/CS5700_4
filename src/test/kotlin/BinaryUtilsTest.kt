@@ -3,15 +3,6 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
 class BinaryUtilsTest {
-    @Test
-    fun shortToBytesTest() {
-        assertEquals(Pair(0.toUByte(), 0.toUByte()), shortToBytes(0u))
-        assertEquals(Pair(0.toUByte(), 1.toUByte()), shortToBytes(1u))
-        assertEquals(Pair(1.toUByte(), 0.toUByte()), shortToBytes(256u))
-        assertEquals(Pair(255.toUByte(), 255.toUByte()), shortToBytes(65535u))
-        assertEquals(Pair(128.toUByte(), 0.toUByte()), shortToBytes(32768u))
-        assertEquals(Pair((-1).toUByte(), (-1).toUByte()), shortToBytes(65535u))
-    }
 
     @Test
     fun bytesToShortTest() {

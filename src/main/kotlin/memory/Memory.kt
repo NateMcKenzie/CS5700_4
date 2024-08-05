@@ -1,10 +1,8 @@
 package memory
 
-import bytesToShort
-
 class Memory(
     val writable: Boolean = true,
-    size : Int = 4096
+    size: Int = 4096,
 ) {
     private val data = MutableList<UByte>(size) { 0u }
 

@@ -1,6 +1,5 @@
 package memory
 
-import shortToBytes
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith

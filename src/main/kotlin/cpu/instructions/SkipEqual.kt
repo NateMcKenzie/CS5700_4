@@ -1,9 +1,7 @@
 package cpu.instructions
 
-import bytesToShort
 import cpu.Nibbled
 import cpu.RegisterBank
-import shortToBytes
 
 class SkipEqual(private val registerBank: RegisterBank) : Instruction(registerBank) {
     private var amount = 2
